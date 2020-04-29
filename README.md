@@ -12,10 +12,20 @@
 ### Prerequisites
 
 Not necessary if you already did the previous tp, but to recall:
+* download and install the latest version of CMake
 
-* download and install the latest version of CMake: https://github.com/Kitware/CMake/releases/download/v3.17.1/cmake-3.17.1-win64-x64.msi
+   * download here: https://github.com/Kitware/CMake/releases/download/v3.17.1/cmake-3.17.1-win64-x64.msi
+   
+   * !!! When installing make sure that the checkbox "ne pas ajouter cmake au PATH" is NOT checked
+ 
 
 * if you don't have it already, download and install MS Visual Studio Community Edition (free for students): https://visualstudio.microsoft.com/downloads/
+
+    * install instructions here: https://docs.microsoft.com/en-us/cpp/build/vscpp-step-0-installation?view=vs-2019
+    
+    * !!! install the "Desktop development with C++"
+    
+    * If you have VS already installed, you can go in **Tools** --> **Get Tools and Features...** to install "Desktop development with C++" if it is missing.
 
 
 ### Create the Visual Studio Solution. 
@@ -49,7 +59,11 @@ This step enables you to create the project file to load inside VS:
 
 * from the tp directory copy `freeglut\bin\x64\freeglut.dll` in `build\Release`
 
-* execute the code.  (On the menu bar, choose **Debug** --> **Start without debugging**.)
+* execute the code:  
+
+  * Select the project you want to run (e.g. `robot`), right click on it and select **Set as Startup Project** 
+  
+  * On the menu bar, choose **Debug** --> **Start without debugging**.)
 
 (see https://docs.microsoft.com/en-us/cpp/build/vscpp-step-2-build?view=vs-2019 for how to build, execute, etc)
 
@@ -70,10 +84,10 @@ Edit the code according to the assignments that are given, rebuild the solution 
 
 **Not necessary if you already did the previous tp.** 
 
-In order to develop with OpenGL some system packages are required:
+In order to develop with OpenGL some system packages are required (unless you are using the N7 machines):
 
 ```
-sudo apt-get install libglu1-mesa-dev freeglut3-dev mesa-common-dev libxi-dev libxmu-devautomake
+sudo apt-get install libglu1-mesa-dev freeglut3-dev build-essential mesa-common-dev libxi-dev libxmu-dev automake
 ```
 
 To build this code we use the CMake build system. You can install CMake from the system package manager but you need a recent version >= 3.10. Check the version that is provided by your linux distribution and if it is suitable usually you need to
@@ -93,7 +107,7 @@ To build this code we use the CMake build system. You can install CMake from the
   
 ### Build
  
-To compile and build the code you can 
+To compile and build the code you do 
 
  ```
  mkdir build && cd build
@@ -135,10 +149,15 @@ make robot
 
 ### Prerequisites
 
-In order to develop with OpenGL you need to have XCode installed.
-You can install it from the `Mac App Store`, see here for more details https://developer.apple.com/support/xcode/
+In order to develop with OpenGL check if 
 
-If you want to use CMake, follow the instructions for linux to install the latest version
+```
+ls  /System/Library/Frameworks/
+```
+contains OpenGL and GLUT frameworks.
+If not you need to install XCode  from the `Mac App Store`, see here for more details https://developer.apple.com/support/xcode/
+
+Install the latest version of CMake by downloading https://github.com/Kitware/CMake/releases/download/v3.17.1/cmake-3.17.1-Darwin-x86_64.dmg
 
 ### Build
  
