@@ -66,13 +66,13 @@ void DrawJoint()
 	// first draw the reference system
 	DrawReferenceSystem();
 
-	// Draw the joint as a parallepiped (a cube scaled on the y-axis)
-	// the bottom face of the cube must be on the xy axis
+	// Draw the joint as a parallelepiped (a cube scaled on the y-axis)
+	// the bottom face of the cube must be on the xz plane
 
 
 
 	//**********************************
-	// draw the parallepiped
+	// draw the parallelepiped
 	//**********************************
 
 
