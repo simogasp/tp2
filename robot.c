@@ -29,8 +29,8 @@ int RobotAngleX = 0;
 int RobotAngleY = 0;
 
 // how open are the pincers [0,1]
-#define START 0.125
-#define END 0.5
+#define START 0.125f
+#define END 0.5f
 float open = 1.0f;
 
 //*************************************************************************
@@ -41,7 +41,7 @@ void DrawReferenceSystem()
     //**********************************
     // set the line width to 3.0
     //**********************************
-    glLineWidth (3.0);
+    glLineWidth (3.f);
     //**********************************
     // Start to draw the lines as a set of vertices
     //**********************************
@@ -49,30 +49,30 @@ void DrawReferenceSystem()
     //**********************************
     // Set the color red for the x-axis
     //**********************************
-    glColor3f ( 1, 0, 0);
+    glColor3f ( 1.f, 0.f, 0.f);
     //**********************************
     // Set TWO ending points for the line representing the x-axis
     //**********************************
-    glVertex3f (0, 0, 0);
-    glVertex3f (1, 0, 0);
+    glVertex3f (0.f, 0.f, 0.f);
+    glVertex3f (1.f, 0.f, 0.f);
     //**********************************
     // Set the color green for the y-axis
     //**********************************
-    glColor3f (0, 1, 0);
+    glColor3f (0.f, 1.f, 0.f);
     //**********************************
     // Set TWO ending points for the line representing the y-axis
     //**********************************
-    glVertex3f (0, 0, 0);
-    glVertex3f (0, 1, 0);
+    glVertex3f (0.f, 0.f, 0.f);
+    glVertex3f (0.f, 1.f, 0.f);
     //**********************************
     // Set the color blue for the z-axis
     //**********************************
-    glColor3f (0, 0, 1);
+    glColor3f (0.f, 0.f, 1.f);
     //**********************************
     // Set TWO ending points for the line representing the z-axis
     //**********************************
-    glVertex3f (0, 0, 0);
-    glVertex3f (0, 0, 1);
+    glVertex3f (0.f, 0.f, 0.f);
+    glVertex3f (0.f, 0.f, 1.f);
     //**********************************
     // End the drawing
     //**********************************
@@ -80,11 +80,11 @@ void DrawReferenceSystem()
     //**********************************
     // reset the drawing color to white
     //**********************************
-    glColor3f (1,1, 1);
+    glColor3f (1.f,1.f, 1.f);
     //**********************************
     // reset the line width to 1.0
     //**********************************
-    glLineWidth (1.0);
+    glLineWidth (1.f);
 }
 
 
@@ -100,7 +100,7 @@ void DrawJoint()
     //**********************************
     // Bring the cube "up" so that the bottom face is on the xz plane
     //**********************************
-    glTranslatef (0.0, 1.,0 );
+    glTranslatef (0.f, 1.f,0.f );
 
     //**********************************
     // draw the scaled cube. Remember that the scaling has to be only
@@ -108,8 +108,8 @@ void DrawJoint()
     // of the modelview matrix...
     //**********************************
     glPushMatrix();
-    glScalef(1,2,1);
-    glutWireCube(1);
+    glScalef(1.f,2.f,1.f);
+    glutWireCube(1.f);
     glPopMatrix();
 }
 
@@ -123,7 +123,7 @@ void DrawRobot()
 
     // draw the first joint
     DrawJoint();
-    glTranslatef (0.0, 1.,0 );
+    glTranslatef (0.f, 1.f,0.f );
 
     // // Draw the other joints
     // // every joint must be placed on top of the previous one
@@ -131,32 +131,32 @@ void DrawRobot()
     //**********************************
     // the second joint
     //**********************************
-    glRotatef (Angle1, 1.0, 0.0, 0.0);
+    glRotatef (Angle1, 1.f, 0.f, 0.f);
     DrawJoint();
     //**********************************
     // the third joint
     //**********************************
-    glTranslatef (0.0, 1.,0 );
-    glRotatef (Angle2, 1.0, 0.0, 0.0);
+    glTranslatef (0.f, 1.f,0.f );
+    glRotatef (Angle2, 1.f, 0.f, 0.f);
     DrawJoint();
 
     // // Draw the Pincers
     // /First the base
-    glTranslatef (0.0, 1.125,0 );
+    glTranslatef (0.f, 1.125f,0.f );
     glPushMatrix();
-    glScalef(1,0.25,0.25);
+    glScalef(1.f,0.25f,0.25f);
     glutWireCube(1);
     glPopMatrix();
-    glTranslatef (0.0, 0.45,0 );
+    glTranslatef (0.f, 0.45f,0.f );
     // The the fork
     glPushMatrix();
-    glTranslatef (-START + open*(START-END), 0.0,0 );
-    glScalef(0.25,0.65,0.25);
+    glTranslatef (-START + open*(START-END), 0.f,0.f );
+    glScalef(0.25f,0.65f,0.25f);
     glutWireCube(1);
     glPopMatrix();
     glPushMatrix();
-    glTranslatef (START + open*(END-START), 0.0,0 );
-    glScalef(0.25,0.65,0.25);
+    glTranslatef (START + open*(END-START), 0.0f,0.f );
+    glScalef(0.25f,0.65f,0.25f);
     glutWireCube(1);
     glPopMatrix();
 
@@ -187,11 +187,11 @@ void display(void)
     //**********************************
     // Rotate the robot around the x-axis according to the relevant angle
     //**********************************
-    glRotatef(RobotAngleX,1,0,0);
+    glRotatef(RobotAngleX,1.f,0,0.f);
     //**********************************
     // Rotate the robot around the y-axis according to the relevant angle
     //**********************************
-    glRotatef(RobotAngleY,0,1,0);
+    glRotatef(RobotAngleY,0.f,1.f,0.f);
 
     // draw the robot
     DrawRobot();
@@ -286,7 +286,7 @@ void keyboard (unsigned char key, int x, int y)
 
 void init(void)
 {
-    glClearColor (0.0, 0.0, 0.0, 0.0);
+    glClearColor (0.f, 0.f, 0.f, 0.f);
     glMatrixMode (GL_PROJECTION);
     glLoadIdentity ();
     gluPerspective(65.0, 1.0, 1.0, 100.0);
