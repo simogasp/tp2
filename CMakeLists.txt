@@ -22,7 +22,7 @@ endif()
 
 
 add_executable(robot robot.c)
-target_include_directories(robot PUBLIC ${OPENGL_INCLUDE_DIR} ${GLUT_INCLUDE_DIR})
+#target_include_directories(robot PUBLIC ${OPENGL_INCLUDE_DIR} ${GLUT_INCLUDE_DIR})
 #target_link_libraries(robot PUBLIC ${OPENGL_opengl_LIBRARY} ${OPENGL_glu_LIBRARY} ${GLUT_LIBRARIES})
 target_link_libraries(robot OpenGL::GL OpenGL::GLU GLUT::GLUT)
 if (CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU")
