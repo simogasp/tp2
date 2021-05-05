@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.10)
-project(tp2 VERSION 0.1 LANGUAGES C CXX)
+project(tp2 VERSION 2021.0.0 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(OpenGL_GL_PREFERENCE "GLVND")
+#set(OpenGL_GL_PREFERENCE "GLVND")
 find_package(OpenGL REQUIRED)
 message(STATUS "OPENGL_gl_LIBRARY: ${OPENGL_gl_LIBRARY}")
 
@@ -23,8 +23,8 @@ endif()
 
 add_executable(robot robot.c)
 target_include_directories(robot PUBLIC ${OPENGL_INCLUDE_DIR} ${GLUT_INCLUDE_DIR})
-target_link_libraries(robot PUBLIC ${OPENGL_opengl_LIBRARY} ${OPENGL_glu_LIBRARY} ${GLUT_LIBRARIES})
-#target_link_libraries(helloteapot OpenGL::OpenGL OpenGL::GLU GLUT::GLUT)
+#target_link_libraries(robot PUBLIC ${OPENGL_opengl_LIBRARY} ${OPENGL_glu_LIBRARY} ${GLUT_LIBRARIES})
+target_link_libraries(robot OpenGL::GL OpenGL::GLU GLUT::GLUT)
 if (CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU")
     target_compile_options(robot PRIVATE -Wall -Wextra -pedantic -Wno-comment)
 endif()
