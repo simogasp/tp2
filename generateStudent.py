@@ -37,11 +37,11 @@ def main(working_dir: str, archive_name: str, skip_cleaning: bool = False, skip_
 
     studentify_dir = os.path.join(tempfile.gettempdir(), "tpt")
     logger.info("Cloning studentify.py to %s", studentify_dir)
-    subprocess.check_call(["git", "clone", "https://github.com/simogasp/studentipy.git", studentify_dir])
+    subprocess.run(["git", "clone", "https://github.com/simogasp/studentipy.git", studentify_dir])
 
     robot_cpp = os.path.join(dest_name, "robot.cpp")
     logger.info("Applying studentify to %s", robot_cpp)
-    subprocess.check_call(
+    subprocess.run(
         ["python3", os.path.join(studentify_dir, "studentify.py"), robot_cpp, "-o", robot_cpp, "--force"])
 
     logger.info("Removing studentify.py")
@@ -108,7 +108,7 @@ if __name__ == "__main__":
     if args.archive_name:
         zip_name = args.archive_name
     else:
-        version = subprocess.check_output(["git", "describe", "--tags"]).decode("utf-8").strip()[1:]
+        version = subprocess.run(["git", "describe", "--tags"], check=True, stdout=subprocess.PIPE).stdout.decode("utf-8").strip()[1:]
         zip_name = f"tp2ogl-v{version}"
 
     try:
