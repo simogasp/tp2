@@ -16,9 +16,15 @@ message(STATUS "GLUT_FOUND: ${GLUT_FOUND}")
 message(STATUS "GLUT_INCLUDE_DIR: ${GLUT_INCLUDE_DIR}")
 message(STATUS "GLUT_LIBRARIES: ${GLUT_LIBRARIES}")
 
+if(CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU")
+    set(MY_COMPILE_OPTIONS "-Wall;-Wextra;-pedantic;-Wno-comment;-Wshadow;-Wnon-virtual-dtor;-Wpedantic;-Wconversion;-Wmisleading-indentation;-Wsign-conversion")
+elseif(MSVC)
+    set(MY_COMPILE_OPTIONS "/W4;/permissive-")
+endif()
+
 if(APPLE)
-  add_definitions(-Wno-deprecated-declarations)
-endif()  
+    list(APPEND MY_COMPILE_OPTIONS "-Wno-deprecated-declarations")
+endif()
 
 
 add_executable(robot robot.cpp)
@@ -26,9 +32,8 @@ add_executable(robot robot.cpp)
 #target_link_libraries(robot PUBLIC ${OPENGL_opengl_LIBRARY} ${OPENGL_glu_LIBRARY} ${GLUT_LIBRARIES})
 target_link_libraries(robot OpenGL::GL OpenGL::GLU GLUT::GLUT)
 
-if (CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU")
-    target_compile_options(robot PRIVATE -Wall -Wextra -pedantic -Wno-comment)
-endif()
+target_compile_options(robot PRIVATE ${MY_COMPILE_OPTIONS})
+
 if(MSVC)
     target_compile_definitions(robot PUBLIC -DNOMINMAX)
 endif()
