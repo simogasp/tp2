@@ -80,7 +80,7 @@ if __name__ == "__main__":
         "-a",
         "--archive-name",
         dest="archive_name",
-        help="The name of the archive to be created. [default=tp4ogl-v<version>]"
+        help="The name of the archive to be created. [default=tp2ogl-v<version>]"
     )
     parser.add_argument(
         "--skip-cleaning",
