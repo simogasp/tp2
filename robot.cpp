@@ -45,7 +45,7 @@ void drawReferenceSystem()
     //**********************************
     // set the line width to 3.0
     //**********************************
-    glLineWidth(3.f);
+    glLineWidth(3.f);   //!!
     //**********************************
     // Draw three lines along the x, y, z axis to represent the reference system
     // Use red for the x-axis, green for the y-axis and blue for the z-axis
@@ -141,7 +141,7 @@ void drawRobot()
     //**********************************
     // the second joint
     //**********************************
-    glRotatef(angle1, 1.f, 0.f, 0.f);  //!!
+    glRotatef(angle1, 1.f, 0.f, 0.f);   //!!
     drawJoint();                        //!!
     //**********************************
     // the third joint
@@ -193,12 +193,12 @@ void display()
     //**********************************
     // we work on a copy of the current MODELVIEW matrix, hence we need to...
     //**********************************
-    glPushMatrix();  //!!
-    drawReferenceSystem();  //!!
+    glPushMatrix();           //!!
+    drawReferenceSystem();    //!!
     //**********************************
     // Rotate the robot around the x-axis and y-axis according to the relevant angles
     //**********************************
-    glRotatef(robotAngleX, 1.f, 0, 0.f);  //!!
+    glRotatef(robotAngleX, 1.f, 0, 0.f);    //!!
     glRotatef(robotAngleY, 0.f, 1.f, 0.f);  //!!
 
     // draw the robot
@@ -266,22 +266,22 @@ void keyboard(unsigned char key, int, int)
 //<!!
         case 'a':
             angle1 = std::fmod(angle1 + 5, 360.f);
-//            printf("Angle 1: %f\n", Angle1);
+            // printf("Angle 1: %f\n", angle1);
             break;
         case 'z':
             angle1 = std::fmod(angle1 - 5, 360.f);
-//            printf("Angle 1: %f\n", Angle1);
+            // printf("Angle 1: %f\n", angle1);
             break;
         //**********************************
         // Manage the update of Angle2 with the key 'e' and 'r'
         //**********************************
         case 'e':
             angle2 = std::fmod(angle2 + 5, 360.f);
-//            printf("Angle 2: %f\n", Angle2);
+            // printf("Angle 2: %f\n", angle2);
             break;
         case 'r':
             angle2 = std::fmod(angle2 - 5, 360.f);
-//            printf("Angle 2: %f\n", Angle2);
+            // printf("Angle 2: %f\n", angle2);
             break;
 
         //**********************************
@@ -363,12 +363,12 @@ int main(int argc, char **argv) {
     //**********************************
     // Register the keyboard function
     //**********************************
-    glutKeyboardFunc(keyboard);
+    glutKeyboardFunc(keyboard);  //!!
 
     //**********************************
     // Register the special key function
     //**********************************
-    glutSpecialFunc(arrows);
+    glutSpecialFunc(arrows);  //!!
 
     // just print the help
     usage();
