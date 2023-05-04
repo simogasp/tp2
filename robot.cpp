@@ -22,17 +22,17 @@
 
 
 // Global variables to animate the robotic arm
-int Angle1 = 0;
-int Angle2 = 0;
+float Angle1 = 0;
+float Angle2 = 0;
 
 // Global variables to rotate the arm as a whole
-int RobotAngleX = 0;
-int RobotAngleY = 0;
+float RobotAngleX = 0;
+float RobotAngleY = 0;
 
 //<!!
 // how open are the pincers [0,1]
-#define START 0.125f
-#define END 0.5f
+constexpr float START{0.125f};
+constexpr float END{0.5f};
 float open = 1.0f;
 //>!!
 
@@ -229,16 +229,16 @@ void arrows (int key, int, int)
     switch (key)
     {
         case GLUT_KEY_UP:
-            RobotAngleX = (RobotAngleX+5) % 360;
+            RobotAngleX = std::fmod(RobotAngleX+5, 360.f);
             break;
         case GLUT_KEY_DOWN:
-            RobotAngleX = (RobotAngleX-5) % 360;
+            RobotAngleX = std::fmod(RobotAngleX-5, 360.f);
             break;
         case GLUT_KEY_LEFT:
-            RobotAngleY = (RobotAngleY+5) % 360;
+            RobotAngleY = std::fmod(RobotAngleY+5, 360.f);
             break;
         case GLUT_KEY_RIGHT:
-            RobotAngleY = (RobotAngleY-5) % 360;
+            RobotAngleY = std::fmod(RobotAngleY-5, 360.f);
             break;
         default: break;
     }
@@ -266,23 +266,23 @@ void keyboard (unsigned char key, int, int)
         //**********************************
 //<!!
         case 'a':
-            Angle1 = (Angle1+5) % 360;
-//            printf("Angle 1: %f\n",(float)Angle1);
+            Angle1 = std::fmod(Angle1+5, 360.f);
+//            printf("Angle 1: %f\n", Angle1);
             break;
         case 'z':
-            Angle1 = (Angle1-5) % 360;
-//            printf("Angle 1: %f\n",(float)Angle1);
+            Angle1 = std::fmod(Angle1-5, 360.f);
+//            printf("Angle 1: %f\n", Angle1);
             break;
             //**********************************
             // Manage the update of Angle2 with the key 'e' and 'r'
             //**********************************
         case 'e':
-            Angle2 = (Angle2+5) % 360;
-//            printf("Angle 2: %f\n",(float)Angle2);
+            Angle2 = std::fmod(Angle2+5, 360.f);
+//            printf("Angle 2: %f\n", Angle2);
             break;
         case 'r':
-            Angle2 = (Angle2-5) % 360;
-//            printf("Angle 2: %f\n",(float)Angle2);
+            Angle2 = std::fmod(Angle2-5, 360.f);
+//            printf("Angle 2: %f\n", Angle2);
             break;
 
         //**********************************
@@ -316,7 +316,7 @@ void init()
     glLoadIdentity();
 
     // Place the camera
-    gluLookAt(-1,5,-1,0,0,2,0,1,0);
+    gluLookAt(-1., 5., -1., .0, .0, 2., .0, 1., .0);
 }
 
 
