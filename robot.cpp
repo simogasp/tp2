@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <cstdio>
 #include <cmath>
+#include <algorithm>
 
 // for mac osx
 #ifdef __APPLE__
@@ -284,23 +285,20 @@ void keyboard (unsigned char key, int, int)
 //            printf("Angle 2: %f\n",(float)Angle2);
             break;
 
-            //**********************************
-            // Manage the pincers
-            //**********************************
+        //**********************************
+        // Manage the pincers
+        //**********************************
         case 'o':
             open += 0.05f;
-            if (open > 1) open = 1;
-
             break;
         case 'l':
             open -= 0.05f;
-            if (open < 0) open = 0;
-
             break;
 //>!!
         default:
             break;
     }
+    open = std::clamp(open, 0.f, 1.f);   //!!
     glutPostRedisplay ();
 }
 
