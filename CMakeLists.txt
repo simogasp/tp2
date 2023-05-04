@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(tp2 VERSION 2021.0.0 LANGUAGES CXX)
+project(tp2 VERSION 2023.1.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 11)
 
