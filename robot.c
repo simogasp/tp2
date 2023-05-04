@@ -28,10 +28,12 @@ int Angle2 = 0;
 int RobotAngleX = 0;
 int RobotAngleY = 0;
 
+//<!!
 // how open are the pincers [0,1]
 #define START 0.125f
 #define END 0.5f
 float open = 1.0f;
+//>!!
 
 //*************************************************************************
 // Function that draws a reference system
@@ -43,8 +45,10 @@ void DrawReferenceSystem()
     //**********************************
     glLineWidth (3.f);
     //**********************************
-    // Start to draw the lines as a set of vertices
+    // Draw three lines along the x, y, z axis to represent the reference system
+    // Use red for the x-axis, green for the y-axis and blue for the z-axis
     //**********************************
+//<!!
     glBegin (GL_LINES);
     //**********************************
     // Set the color red for the x-axis
@@ -77,14 +81,15 @@ void DrawReferenceSystem()
     // End the drawing
     //**********************************
     glEnd();
+//>!!
     //**********************************
     // reset the drawing color to white
     //**********************************
-    glColor3f (1.f,1.f, 1.f);
+    glColor3f (1.f,1.f, 1.f);  //!!
     //**********************************
     // reset the line width to 1.0
     //**********************************
-    glLineWidth (1.f);
+    glLineWidth (1.f);  //!!
 }
 
 
@@ -96,21 +101,23 @@ void DrawJoint()
     // first draw the reference system
     DrawReferenceSystem();
 
-	// Draw the joint as a parallelepiped (a cube scaled on the y-axis)
+    // Draw the joint as a parallelepiped (a cube scaled on the y-axis)
     //**********************************
     // Bring the cube "up" so that the bottom face is on the xz plane
     //**********************************
-    glTranslatef (0.f, 1.f,0.f );
+    glTranslatef (0.f, 1.f,0.f ); //!!
 
     //**********************************
     // draw the scaled cube. Remember that the scaling has to be only
     // on the local reference system, hence we need to get a local copy
     // of the modelview matrix...
     //**********************************
+//<!!
     glPushMatrix();
     glScalef(1.f,2.f,1.f);
     glutWireCube(1.f);
     glPopMatrix();
+//>!!
 }
 
 // Function that draws the robot as three parallelepipeds
@@ -119,29 +126,30 @@ void DrawRobot()
     //**********************************
     // we work on a copy of the current MODELVIEW matrix, hence we need to...
     //**********************************
-    glPushMatrix();
+    glPushMatrix();  //!!
 
     // draw the first joint
     DrawJoint();
-    glTranslatef (0.f, 1.f,0.f );
+    glTranslatef (0.f, 1.f,0.f );  //!!
 
-    // // Draw the other joints
-    // // every joint must be placed on top of the previous one
-    // // and rotated according to the relevant Angle
+    // Draw the other joints
+    // every joint must be placed on top of the previous one
+    // and rotated according to the relevant Angle
     //**********************************
     // the second joint
     //**********************************
-    glRotatef (Angle1, 1.f, 0.f, 0.f);
-    DrawJoint();
+    glRotatef (Angle1, 1.f, 0.f, 0.f);  //!!
+    DrawJoint();                        //!!
     //**********************************
     // the third joint
     //**********************************
+//<!!
     glTranslatef (0.f, 1.f,0.f );
     glRotatef (Angle2, 1.f, 0.f, 0.f);
     DrawJoint();
 
-    // // Draw the Pincers
-    // /First the base
+    // Draw the Pincers
+    // First the base
     glTranslatef (0.f, 1.125f,0.f );
     glPushMatrix();
     glScalef(1.f,0.25f,0.25f);
@@ -159,11 +167,11 @@ void DrawRobot()
     glScalef(0.25f,0.65f,0.25f);
     glutWireCube(1);
     glPopMatrix();
-
+//>!!
     //**********************************
     // "Release" the copy of the current MODELVIEW matrix
     //**********************************
-    glPopMatrix();
+    glPopMatrix();  //!!
 
 }
 
@@ -182,16 +190,13 @@ void display(void)
     //**********************************
     // we work on a copy of the current MODELVIEW matrix, hence we need to...
     //**********************************
-    glPushMatrix();
-    DrawReferenceSystem();
+    glPushMatrix();  //!!
+    DrawReferenceSystem();  //!!
     //**********************************
-    // Rotate the robot around the x-axis according to the relevant angle
+    // Rotate the robot around the x-axis and y-axis according to the relevant angles
     //**********************************
-    glRotatef(RobotAngleX,1.f,0,0.f);
-    //**********************************
-    // Rotate the robot around the y-axis according to the relevant angle
-    //**********************************
-    glRotatef(RobotAngleY,0.f,1.f,0.f);
+    glRotatef(RobotAngleX,1.f,0,0.f);  //!!
+    glRotatef(RobotAngleY,0.f,1.f,0.f);  //!!
 
     // draw the robot
     DrawRobot();
@@ -199,7 +204,7 @@ void display(void)
     //**********************************
     // "Release" the copy of the current MODELVIEW matrix
     //**********************************
-    glPopMatrix();
+    glPopMatrix();  //!!
 
     // flush drawing routines to the window
     glutSwapBuffers();
@@ -208,7 +213,12 @@ void display(void)
 //*************************************************************************
 // Special keys callback
 //*************************************************************************
-void arrows (int key, int x, int y) {
+void arrows (int key, int x, int y) 
+{
+    //**********************************
+    // Manage the update of RobotAngleX and RobotAngleY with the arrow keys
+    //**********************************
+//<!!
     switch (key)
     {
         case GLUT_KEY_UP:
@@ -225,6 +235,7 @@ void arrows (int key, int x, int y) {
             break;
         default: break;
     }
+//>!!
     glutPostRedisplay ();
 }
 
@@ -239,9 +250,10 @@ void keyboard (unsigned char key, int x, int y)
         case 27:
             exit(0);
             break;
-            //**********************************
-            // Manage the update of Angle1 with the key 'a' and 'z'
-            //**********************************
+        //**********************************
+        // Manage the update of Angle1 with the key 'a' and 'z'
+        //**********************************
+//<!!
         case 'a':
             Angle1 = (Angle1+5) % 360;
 //            printf("Angle 1: %f\n",(float)Angle1);
@@ -275,7 +287,7 @@ void keyboard (unsigned char key, int x, int y)
             if (open < 0) open = 0;
 
             break;
-
+//>!!
         default:
             break;
     }
@@ -325,7 +337,7 @@ void usage()
     printf ("Arrows key: rotate the whole robot\n");
     printf ("[a][z] : move the second joint of the arm\n");
     printf ("[e][r] : move the third joint of the arm\n");
-    printf ("[o][l] : move the pincers\n");
+    printf ("[o][l] : move the pincers\n"); //!!
     printf ("[esc]  : terminate\n");
     printf ("*******\n");
 }
