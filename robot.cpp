@@ -39,7 +39,7 @@ float open = 1.0f;
 /**
  * Function that draws the reference system (three lines along the x, y, z axis)
  */
-void DrawReferenceSystem()
+void drawReferenceSystem()
 {
     //**********************************
     // set the line width to 3.0
@@ -97,10 +97,10 @@ void DrawReferenceSystem()
 /**
  * Function that draws a single joint of the robotic arm
  */
-void DrawJoint()
+void drawJoint()
 {
     // first draw the reference system
-    DrawReferenceSystem();
+    drawReferenceSystem();
 
     // Draw the joint as a parallelepiped (a cube scaled on the y-axis)
     //**********************************
@@ -124,7 +124,7 @@ void DrawJoint()
 /**
  * Function that draws the robot as three parallelepipeds
  */
-void DrawRobot()
+void drawRobot()
 {
     //**********************************
     // we work on a copy of the current MODELVIEW matrix, hence we need to...
@@ -132,24 +132,23 @@ void DrawRobot()
     glPushMatrix();  //!!
 
     // draw the first joint
-    DrawJoint();
+    drawJoint();
     glTranslatef (0.f, 1.f,0.f );  //!!
 
-    // Draw the other joints
-    // every joint must be placed on top of the previous one
+    // Draw the other joints: every joint must be placed on top of the previous one
     // and rotated according to the relevant Angle
     //**********************************
     // the second joint
     //**********************************
     glRotatef (angle1, 1.f, 0.f, 0.f);  //!!
-    DrawJoint();                        //!!
+    drawJoint();                        //!!
     //**********************************
     // the third joint
     //**********************************
 //<!!
     glTranslatef (0.f, 1.f,0.f );
     glRotatef (angle2, 1.f, 0.f, 0.f);
-    DrawJoint();
+    drawJoint();
 
     // Draw the Pincers
     // First the base
@@ -194,7 +193,7 @@ void display()
     // we work on a copy of the current MODELVIEW matrix, hence we need to...
     //**********************************
     glPushMatrix();  //!!
-    DrawReferenceSystem();  //!!
+    drawReferenceSystem();  //!!
     //**********************************
     // Rotate the robot around the x-axis and y-axis according to the relevant angles
     //**********************************
@@ -202,7 +201,7 @@ void display()
     glRotatef(robotAngleY, 0.f, 1.f, 0.f);  //!!
 
     // draw the robot
-    DrawRobot();
+    drawRobot();
 
     //**********************************
     // "Release" the copy of the current MODELVIEW matrix
@@ -273,9 +272,9 @@ void keyboard (unsigned char key, int, int)
             angle1 = std::fmod(angle1 - 5, 360.f);
 //            printf("Angle 1: %f\n", Angle1);
             break;
-            //**********************************
-            // Manage the update of Angle2 with the key 'e' and 'r'
-            //**********************************
+        //**********************************
+        // Manage the update of Angle2 with the key 'e' and 'r'
+        //**********************************
         case 'e':
             angle2 = std::fmod(angle2 + 5, 360.f);
 //            printf("Angle 2: %f\n", Angle2);
