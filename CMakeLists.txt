@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(tp2 VERSION 2021.0.0 LANGUAGES C CXX)
+project(tp2 VERSION 2021.0.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 11)
 
@@ -21,7 +21,7 @@ if(APPLE)
 endif()  
 
 
-add_executable(robot robot.c)
+add_executable(robot robot.cpp)
 #target_include_directories(robot PUBLIC ${OPENGL_INCLUDE_DIR} ${GLUT_INCLUDE_DIR})
 #target_link_libraries(robot PUBLIC ${OPENGL_opengl_LIBRARY} ${OPENGL_glu_LIBRARY} ${GLUT_LIBRARIES})
 target_link_libraries(robot OpenGL::GL OpenGL::GLU GLUT::GLUT)
