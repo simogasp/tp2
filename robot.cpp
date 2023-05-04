@@ -35,9 +35,9 @@ int RobotAngleY = 0;
 float open = 1.0f;
 //>!!
 
-//*************************************************************************
-// Function that draws a reference system
-//*************************************************************************
+/**
+ * Function that draws the reference system (three lines along the x, y, z axis)
+ */
 void DrawReferenceSystem()
 {
     //**********************************
@@ -93,9 +93,9 @@ void DrawReferenceSystem()
 }
 
 
-//*************************************************************************
-// Function that draws a single joint of the robotic arm
-//*************************************************************************
+/**
+ * Function that draws a single joint of the robotic arm
+ */
 void DrawJoint()
 {
     // first draw the reference system
@@ -120,7 +120,9 @@ void DrawJoint()
 //>!!
 }
 
-// Function that draws the robot as three parallelepipeds
+/**
+ * Function that draws the robot as three parallelepipeds
+ */
 void DrawRobot()
 {
     //**********************************
@@ -176,10 +178,10 @@ void DrawRobot()
 }
 
 
-//*************************************************************************
-// display callback
-//*************************************************************************
-void display(void)
+/**
+ * Function that handles the display callback (drawing routine)
+ */
+void display()
 {
     // clear the window
     glClear (GL_COLOR_BUFFER_BIT);
@@ -210,10 +212,14 @@ void display(void)
     glutSwapBuffers();
 }
 
-//*************************************************************************
-// Special keys callback
-//*************************************************************************
-void arrows (int key, int x, int y) 
+
+/**
+ * Function that handles the special keys callback
+ * @param[in] key the key that has been pressed
+ * @param[in] x the mouse in window relative x-coordinate when the key was pressed
+ * @param[in] y the mouse in window relative y-coordinate when the key was pressed
+ */
+void arrows (int key, int, int)
 {
     //**********************************
     // Manage the update of RobotAngleX and RobotAngleY with the arrow keys
@@ -239,10 +245,14 @@ void arrows (int key, int x, int y)
     glutPostRedisplay ();
 }
 
-//*************************************************************************
-// Keyboard callback
-//*************************************************************************
-void keyboard (unsigned char key, int x, int y)
+
+/**
+ * Function that handles the keyboard callback
+ * @param key  the key that has been pressed
+ * @param[in] x the mouse in window relative x-coordinate when the key was pressed
+ * @param[in] y the mouse in window relative y-coordinate when the key was pressed
+ */
+void keyboard (unsigned char key, int, int)
 {
     switch (key)
     {
@@ -296,7 +306,7 @@ void keyboard (unsigned char key, int x, int y)
 
 
 
-void init(void)
+void init()
 {
     glClearColor (0.f, 0.f, 0.f, 0.f);
     glMatrixMode (GL_PROJECTION);
@@ -312,9 +322,11 @@ void init(void)
 }
 
 
-//*************************************************************************
-// Function called every time the main window is resized
-//*************************************************************************
+/**
+ * Function called every time the main window is resized
+ * @param[in] width the new window width in pixels
+ * @param[in] height the new window height in pixels
+ */
 void reshape ( int width, int height )
 {
 
@@ -327,10 +339,9 @@ void reshape ( int width, int height )
 }
 
 
-
-//*************************************************************************
-// Prints out how to use the keyboard
-//*************************************************************************
+/**
+ * Function that prints out how to use the keyboard
+ */
 void usage()
 {
     printf ("\n*******\n");
@@ -342,7 +353,7 @@ void usage()
     printf ("*******\n");
 }
 
-//////////////////////////////////////////////////////////////
+
 int main(int argc, char** argv)
 {
     glutInit(&argc, argv);
@@ -362,7 +373,7 @@ int main(int argc, char** argv)
     //**********************************
     // Register the special key function
     //**********************************
-    glutSpecialFunc (arrows);
+    glutSpecialFunc(arrows);
 
     // just print the help
     usage();
@@ -371,7 +382,5 @@ int main(int argc, char** argv)
 
     return EXIT_SUCCESS;
 }
-
-//////////////////////////////////////////////////////////////
 
 
