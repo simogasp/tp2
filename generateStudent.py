@@ -50,7 +50,7 @@ def main(working_dir: str, archive_name: str, skip_cleaning: bool = False, skip_
     if not skip_packaging:
         logger.info("Generating archive %s.zip in %s", archive_name, working_dir)
         with zipfile.ZipFile(os.path.join(working_dir, f"{archive_name}.zip"), "w") as zip_file:
-            for root, dirs, files in os.walk(dest_name):
+            for root, _, files in os.walk(dest_name):
                 for file in files:
                     zip_file.write(os.path.join(root, file), os.path.relpath(os.path.join(root, file), dest_name))
 
