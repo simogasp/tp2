@@ -18,6 +18,7 @@
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include <GL/freeglut.h>
+
 #endif
 
 
@@ -44,40 +45,40 @@ void drawReferenceSystem()
     //**********************************
     // set the line width to 3.0
     //**********************************
-    glLineWidth (3.f);
+    glLineWidth(3.f);
     //**********************************
     // Draw three lines along the x, y, z axis to represent the reference system
     // Use red for the x-axis, green for the y-axis and blue for the z-axis
     //**********************************
 //<!!
-    glBegin (GL_LINES);
+    glBegin(GL_LINES);
     //**********************************
     // Set the color red for the x-axis
     //**********************************
-    glColor3f ( 1.f, 0.f, 0.f);
+    glColor3f(1.f, 0.f, 0.f);
     //**********************************
     // Set TWO ending points for the line representing the x-axis
     //**********************************
-    glVertex3f (0.f, 0.f, 0.f);
-    glVertex3f (1.f, 0.f, 0.f);
+    glVertex3f(0.f, 0.f, 0.f);
+    glVertex3f(1.f, 0.f, 0.f);
     //**********************************
     // Set the color green for the y-axis
     //**********************************
-    glColor3f (0.f, 1.f, 0.f);
+    glColor3f(0.f, 1.f, 0.f);
     //**********************************
     // Set TWO ending points for the line representing the y-axis
     //**********************************
-    glVertex3f (0.f, 0.f, 0.f);
-    glVertex3f (0.f, 1.f, 0.f);
+    glVertex3f(0.f, 0.f, 0.f);
+    glVertex3f(0.f, 1.f, 0.f);
     //**********************************
     // Set the color blue for the z-axis
     //**********************************
-    glColor3f (0.f, 0.f, 1.f);
+    glColor3f(0.f, 0.f, 1.f);
     //**********************************
     // Set TWO ending points for the line representing the z-axis
     //**********************************
-    glVertex3f (0.f, 0.f, 0.f);
-    glVertex3f (0.f, 0.f, 1.f);
+    glVertex3f(0.f, 0.f, 0.f);
+    glVertex3f(0.f, 0.f, 1.f);
     //**********************************
     // End the drawing
     //**********************************
@@ -86,11 +87,11 @@ void drawReferenceSystem()
     //**********************************
     // reset the drawing color to white
     //**********************************
-    glColor3f (1.f,1.f, 1.f);  //!!
+    glColor3f(1.f, 1.f, 1.f);  //!!
     //**********************************
     // reset the line width to 1.0
     //**********************************
-    glLineWidth (1.f);  //!!
+    glLineWidth(1.f);  //!!
 }
 
 
@@ -106,7 +107,7 @@ void drawJoint()
     //**********************************
     // Bring the cube "up" so that the bottom face is on the xz plane
     //**********************************
-    glTranslatef (0.f, 1.f,0.f ); //!!
+    glTranslatef(0.f, 1.f, 0.f); //!!
 
     //**********************************
     // draw the scaled cube. Remember that the scaling has to be only
@@ -115,7 +116,7 @@ void drawJoint()
     //**********************************
 //<!!
     glPushMatrix();
-    glScalef(1.f,2.f,1.f);
+    glScalef(1.f, 2.f, 1.f);
     glutWireCube(1.f);
     glPopMatrix();
 //>!!
@@ -133,40 +134,40 @@ void drawRobot()
 
     // draw the first joint
     drawJoint();
-    glTranslatef (0.f, 1.f,0.f );  //!!
+    glTranslatef(0.f, 1.f, 0.f);  //!!
 
     // Draw the other joints: every joint must be placed on top of the previous one
     // and rotated according to the relevant Angle
     //**********************************
     // the second joint
     //**********************************
-    glRotatef (angle1, 1.f, 0.f, 0.f);  //!!
+    glRotatef(angle1, 1.f, 0.f, 0.f);  //!!
     drawJoint();                        //!!
     //**********************************
     // the third joint
     //**********************************
 //<!!
-    glTranslatef (0.f, 1.f,0.f );
-    glRotatef (angle2, 1.f, 0.f, 0.f);
+    glTranslatef(0.f, 1.f, 0.f);
+    glRotatef(angle2, 1.f, 0.f, 0.f);
     drawJoint();
 
     // Draw the Pincers
     // First the base
-    glTranslatef (0.f, 1.125f,0.f );
+    glTranslatef(0.f, 1.125f, 0.f);
     glPushMatrix();
-    glScalef(1.f,0.25f,0.25f);
+    glScalef(1.f, 0.25f, 0.25f);
     glutWireCube(1);
     glPopMatrix();
-    glTranslatef (0.f, 0.45f,0.f );
+    glTranslatef(0.f, 0.45f, 0.f);
     // The the fork
     glPushMatrix();
-    glTranslatef (-START + open*(START-END), 0.f, 0.f );
-    glScalef(0.25f,0.65f,0.25f);
+    glTranslatef(-START + open * (START - END), 0.f, 0.f);
+    glScalef(0.25f, 0.65f, 0.25f);
     glutWireCube(1);
     glPopMatrix();
     glPushMatrix();
-    glTranslatef (START + open*(END-START), 0.0f, 0.f );
-    glScalef(0.25f,0.65f,0.25f);
+    glTranslatef(START + open * (END - START), 0.0f, 0.f);
+    glScalef(0.25f, 0.65f, 0.25f);
     glutWireCube(1);
     glPopMatrix();
 //>!!
@@ -184,7 +185,7 @@ void drawRobot()
 void display()
 {
     // clear the window
-    glClear (GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT);
 
     // working with the GL_MODELVIEW Matrix
     glMatrixMode(GL_MODELVIEW);
@@ -219,14 +220,13 @@ void display()
  * @param[in] x the mouse in window relative x-coordinate when the key was pressed
  * @param[in] y the mouse in window relative y-coordinate when the key was pressed
  */
-void arrows (int key, int, int)
+void arrows(int key, int, int)
 {
     //**********************************
     // Manage the update of RobotAngleX and RobotAngleY with the arrow keys
     //**********************************
 //<!!
-    switch (key)
-    {
+    switch (key) {
         case GLUT_KEY_UP:
             robotAngleX = std::fmod(robotAngleX + 5, 360.f);
             break;
@@ -239,10 +239,11 @@ void arrows (int key, int, int)
         case GLUT_KEY_RIGHT:
             robotAngleY = std::fmod(robotAngleY - 5, 360.f);
             break;
-        default: break;
+        default:
+            break;
     }
 //>!!
-    glutPostRedisplay ();
+    glutPostRedisplay();
 }
 
 
@@ -252,10 +253,9 @@ void arrows (int key, int, int)
  * @param[in] x the mouse in window relative x-coordinate when the key was pressed
  * @param[in] y the mouse in window relative y-coordinate when the key was pressed
  */
-void keyboard (unsigned char key, int, int)
+void keyboard(unsigned char key, int, int)
 {
-    switch (key)
-    {
+    switch (key) {
         case 'q':
         case 27:
             exit(0);
@@ -298,19 +298,18 @@ void keyboard (unsigned char key, int, int)
             break;
     }
     open = std::clamp(open, 0.f, 1.f);   //!!
-    glutPostRedisplay ();
+    glutPostRedisplay();
 }
-
 
 
 void init()
 {
-    glClearColor (0.f, 0.f, 0.f, 0.f);
-    glMatrixMode (GL_PROJECTION);
-    glLoadIdentity ();
+    glClearColor(0.f, 0.f, 0.f, 0.f);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
     gluPerspective(65.0, 1.0, 1.0, 100.0);
 
-    glShadeModel (GL_FLAT);
+    glShadeModel(GL_FLAT);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
@@ -324,15 +323,15 @@ void init()
  * @param[in] width the new window width in pixels
  * @param[in] height the new window height in pixels
  */
-void reshape ( int width, int height )
+void reshape(int width, int height)
 {
 
     // define the viewport transformation;
-    glViewport(0,0,width,height);
+    glViewport(0, 0, width, height);
     if (width < height)
-        glViewport(0,(height-width)/2,width,width);
+        glViewport(0, (height - width) / 2, width, width);
     else
-        glViewport((width-height)/2,0,height,height);
+        glViewport((width - height) / 2, 0, height, height);
 }
 
 
@@ -341,24 +340,23 @@ void reshape ( int width, int height )
  */
 void usage()
 {
-    printf ("\n*******\n");
-    printf ("Arrows key: rotate the whole robot\n");
-    printf ("[a][z] : move the second joint of the arm\n");
-    printf ("[e][r] : move the third joint of the arm\n");
-    printf ("[o][l] : move the pincers\n"); //!!
-    printf ("[esc]  : terminate\n");
-    printf ("*******\n");
+    printf("\n*******\n");
+    printf("Arrows key: rotate the whole robot\n");
+    printf("[a][z] : move the second joint of the arm\n");
+    printf("[e][r] : move the third joint of the arm\n");
+    printf("[o][l] : move the pincers\n"); //!!
+    printf("[esc]  : terminate\n");
+    printf("*******\n");
 }
 
 
-int main(int argc, char** argv)
-{
+int main(int argc, char **argv) {
     glutInit(&argc, argv);
-    glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGB);
-    glutInitWindowSize (500, 500);
-    glutInitWindowPosition (100, 100);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
+    glutInitWindowSize(500, 500);
+    glutInitWindowPosition(100, 100);
     glutCreateWindow(argv[0]);
-    init ();
+    init();
     glutDisplayFunc(display);
 
     glutReshapeFunc(reshape);
