@@ -22,12 +22,12 @@
 
 
 // Global variables to animate the robotic arm
-float Angle1 = 0;
-float Angle2 = 0;
+float angle1 = 0;
+float angle2 = 0;
 
 // Global variables to rotate the arm as a whole
-float RobotAngleX = 0;
-float RobotAngleY = 0;
+float robotAngleX = 0;
+float robotAngleY = 0;
 
 //<!!
 // how open are the pincers [0,1]
@@ -141,14 +141,14 @@ void DrawRobot()
     //**********************************
     // the second joint
     //**********************************
-    glRotatef (Angle1, 1.f, 0.f, 0.f);  //!!
+    glRotatef (angle1, 1.f, 0.f, 0.f);  //!!
     DrawJoint();                        //!!
     //**********************************
     // the third joint
     //**********************************
 //<!!
     glTranslatef (0.f, 1.f,0.f );
-    glRotatef (Angle2, 1.f, 0.f, 0.f);
+    glRotatef (angle2, 1.f, 0.f, 0.f);
     DrawJoint();
 
     // Draw the Pincers
@@ -161,12 +161,12 @@ void DrawRobot()
     glTranslatef (0.f, 0.45f,0.f );
     // The the fork
     glPushMatrix();
-    glTranslatef (-START + open*(START-END), 0.f,0.f );
+    glTranslatef (-START + open*(START-END), 0.f, 0.f );
     glScalef(0.25f,0.65f,0.25f);
     glutWireCube(1);
     glPopMatrix();
     glPushMatrix();
-    glTranslatef (START + open*(END-START), 0.0f,0.f );
+    glTranslatef (START + open*(END-START), 0.0f, 0.f );
     glScalef(0.25f,0.65f,0.25f);
     glutWireCube(1);
     glPopMatrix();
@@ -198,8 +198,8 @@ void display()
     //**********************************
     // Rotate the robot around the x-axis and y-axis according to the relevant angles
     //**********************************
-    glRotatef(RobotAngleX,1.f,0,0.f);  //!!
-    glRotatef(RobotAngleY,0.f,1.f,0.f);  //!!
+    glRotatef(robotAngleX, 1.f, 0, 0.f);  //!!
+    glRotatef(robotAngleY, 0.f, 1.f, 0.f);  //!!
 
     // draw the robot
     DrawRobot();
@@ -229,16 +229,16 @@ void arrows (int key, int, int)
     switch (key)
     {
         case GLUT_KEY_UP:
-            RobotAngleX = std::fmod(RobotAngleX+5, 360.f);
+            robotAngleX = std::fmod(robotAngleX + 5, 360.f);
             break;
         case GLUT_KEY_DOWN:
-            RobotAngleX = std::fmod(RobotAngleX-5, 360.f);
+            robotAngleX = std::fmod(robotAngleX - 5, 360.f);
             break;
         case GLUT_KEY_LEFT:
-            RobotAngleY = std::fmod(RobotAngleY+5, 360.f);
+            robotAngleY = std::fmod(robotAngleY + 5, 360.f);
             break;
         case GLUT_KEY_RIGHT:
-            RobotAngleY = std::fmod(RobotAngleY-5, 360.f);
+            robotAngleY = std::fmod(robotAngleY - 5, 360.f);
             break;
         default: break;
     }
@@ -266,22 +266,22 @@ void keyboard (unsigned char key, int, int)
         //**********************************
 //<!!
         case 'a':
-            Angle1 = std::fmod(Angle1+5, 360.f);
+            angle1 = std::fmod(angle1 + 5, 360.f);
 //            printf("Angle 1: %f\n", Angle1);
             break;
         case 'z':
-            Angle1 = std::fmod(Angle1-5, 360.f);
+            angle1 = std::fmod(angle1 - 5, 360.f);
 //            printf("Angle 1: %f\n", Angle1);
             break;
             //**********************************
             // Manage the update of Angle2 with the key 'e' and 'r'
             //**********************************
         case 'e':
-            Angle2 = std::fmod(Angle2+5, 360.f);
+            angle2 = std::fmod(angle2 + 5, 360.f);
 //            printf("Angle 2: %f\n", Angle2);
             break;
         case 'r':
-            Angle2 = std::fmod(Angle2-5, 360.f);
+            angle2 = std::fmod(angle2 - 5, 360.f);
 //            printf("Angle 2: %f\n", Angle2);
             break;
 
