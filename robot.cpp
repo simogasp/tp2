@@ -1,6 +1,7 @@
 
-#include <stdlib.h>
-#include <stdio.h>
+#include <cstdlib>
+#include <cstdio>
+#include <cmath>
 
 // for mac osx
 #ifdef __APPLE__
@@ -18,7 +19,6 @@
 #include <GL/freeglut.h>
 #endif
 
-#include <math.h>
 
 // Global variables to animate the robotic arm
 int Angle1 = 0;
