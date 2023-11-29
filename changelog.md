@@ -1,4 +1,5 @@
 # Changelog
+
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
@@ -7,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2023.1.0]
 
 ### Added
+
 - warning flags for gcc, clang and msvc
 - use of studentipy tags in the code
 - script to make release with studentipy
@@ -15,19 +17,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - added IPO support 
 
 ### Changed
+
 - modernize and refactoring cmake
 - switched to c++17
 
 ### Fixed
+
 - all warnings on linux and windows
 
 ### Removed
+
 - support for makefile building
 - appveyor ci support
-- 
+
 ## [2021.0.0] - 2021-05-05
 
 ### Fixed
+
 - comments in the code
 - cmakefile using targets for glut
 
@@ -36,8 +42,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 First release on GitHub
 
 ### Added
+
 - cross-platform support
 - freeglut for windows
 - appveyor ci support
-
-
