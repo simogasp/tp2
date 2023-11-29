@@ -33,7 +33,10 @@ Not necessary if you already did the previous tp, but to recall:
 
 This step enables you to create the project file to load inside VS:
 
-- unzip the code inside a folder. *Avoid to place the code in folders with spaces and accented characters*.
+- unzip the code inside a folder.
+
+> [!WARNING]
+> Avoid to place the code in folders with spaces and accented characters in the path.
 
 - open a Terminal and go to the directory containing the code.
 
@@ -54,7 +57,7 @@ This step enables you to create the project file to load inside VS:
 
 ### Compile, build, execute
 
-- open `tp1.sln` inside VS either by double clicking on it or opening from inside VS
+- open `tp2.sln` inside VS either by double clicking on it or opening from inside VS
 
 - build the solution (**Build Solution** from the **Build menu**)
 
@@ -92,7 +95,7 @@ In order to develop with OpenGL some system packages are required (unless you ar
 sudo apt-get install libglu1-mesa-dev freeglut3-dev build-essential mesa-common-dev libxi-dev libxmu-dev automake
 ```
 
-To build this code we use the CMake build system. You can install CMake from the system package manager but you need a recent version >= 3.10. Check the version that is provided by your linux distribution and if it is suitable usually you need to
+To build this code we use the CMake build system. You can install CMake from the system package manager but you need a recent version >= 3.10. Check the version that is provided by your linux distribution and if it is suitable usually you need to.
 
 ```shell
 sudo apt-get install cmake
