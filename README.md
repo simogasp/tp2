@@ -17,17 +17,19 @@ Not necessary if you already did the previous tp, but to recall:
 
   - download here (choose "Windows x64 Installer:"): <https://cmake.org/download/>
 
-  - !!! When installing make sure that the checkbox "ne pas ajouter cmake au PATH" is NOT checked
+> [!IMPORTANT]
+> When installing make sure that the checkbox "ne pas ajouter cmake au PATH" is NOT checked
 
 - if you don't have it already, download and install MS Visual Studio Community Edition (free for students): <https://visualstudio.microsoft.com/downloads/>
 
   - install instructions here: <https://docs.microsoft.com/en-us/cpp/build/vscpp-step-0-installation?view=vs-2019>
 
-  - !!! install the "Desktop development with C++"
+> [!IMPORTANT]
+> install the "Desktop development with C++"
   
   - If you have VS already installed, you can go in **Tools** --> **Get Tools and Features...** to install "Desktop development with C++" if it is missing.
 
-### Create the Visual Studio Solution.
+### Create the Visual Studio Solution
 
 This step enables you to create the project file to load inside VS:
 
@@ -45,7 +47,8 @@ This step enables you to create the project file to load inside VS:
   
   - `dir`
   
-  > if you had a different version of VS installed (not the latest) you may need to adapt the string `Visual Studio 16 2019` to your version: e.g. Visual Studio 15 2017, Visual Studio 14 2015, Visual Studio 12 2013
+> [!NOTE]
+> if you had a different version of VS installed (not the latest) you may need to adapt the string `Visual Studio 16 2019` to your version: e.g. Visual Studio 15 2017, Visual Studio 14 2015, Visual Studio 12 2013
   
 - if everything went well you should find a file named `tp2.sln` inside the directory.
 
@@ -69,9 +72,11 @@ This step enables you to create the project file to load inside VS:
 
 Edit the code according to the assignments that are given, rebuild the solution and execute.
 
-> !!! You need to run the cmake line only **once**
+> [!NOTE]
+> You need to run the cmake line only **once**
 
-> !!! You need to copy the dll file only **once**.
+> [!NOTE]
+> You need to copy the dll file only **once**.
 
 ---
 
@@ -140,7 +145,8 @@ Edit the code as required and then
 make robot
 ```
 
-> !!! the cmake line has to be run only **once**
+> [!NOTE]
+> the cmake line has to be run only **once**
 
 ---
 
@@ -157,7 +163,11 @@ ls  /System/Library/Frameworks/
 contains OpenGL and GLUT frameworks.
 If not you need to install XCode  from the `Mac App Store`, see here for more details <https://developer.apple.com/support/xcode/>
 
-Install the latest version of CMake by downloading <https://github.com/Kitware/CMake/releases/download/v3.17.1/cmake-3.17.1-Darwin-x86_64.dmg>
+Download and install the latest version of CMake <https://cmake.org/download/> OR if you have `brew` installed you can do
+
+```shell
+brew install cmake
+```
 
 ### Build
 
